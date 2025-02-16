@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Brani della Playlist - Spotify App{% endblock %}
+
+{% block content %}
+<h1>Brani della Playlist</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome Brano</th>
+            <th>Artista</th>
+            <th>Album</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for track in tracks %}
+        <tr>
+            <td>{{ track['track']['name'] }}</td>
+            <td>{{ track['track']['artists'][0]['name'] }}</td>
+            <td>{{ track['track']['album']['name'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<p><a href="{{ url_for('home.home') }}" class="btn btn-primary">Torna alla Home</a></p>
+{% endblock %}
